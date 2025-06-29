@@ -12,19 +12,19 @@ export default function Home() {
   const projects: Project[] = [
     {
       title: "Weather App",
-      description: "A simple weather app using OpenWeatherMap API.",
+      description: "A responsive weather app using React and OpenWeatherMap API. Shows current weather, forecasts, and location search.",
       link: "https://your-weather-app.com",
       image: "https://via.placeholder.com/600x300?text=Weather+App",
     },
     {
       title: "Portfolio Website",
-      description: "This personal portfolio you’re viewing now!",
+      description: "This personal portfolio built with React, Bootstrap, and TypeScript. Showcases my recent work and skills.",
       link: "#",
       image: "https://via.placeholder.com/600x300?text=Portfolio+Website",
     },
     {
       title: "Task Manager",
-      description: "A task management tool built with React and Firebase.",
+      description: "A productivity-focused task manager app with Firebase backend, real-time updates, and user authentication.",
       link: "https://your-task-manager.com",
       image: "https://via.placeholder.com/600x300?text=Task+Manager",
     },
@@ -55,20 +55,22 @@ export default function Home() {
       {/* Hero */}
       <section className="py-5 bg-dark text-light text-center">
         <div className="container">
-          <h1 className="display-3 fw-bold mb-2">👩‍💻 Jane Doe</h1>
-          <p className="lead fs-4">Web Developer · Designer · Creator</p>
-          <a href="#projects" className="btn btn-outline-light btn-lg mt-3 shadow-sm">View My Work</a>
+          <h1 className="display-4 fw-bold mb-3">Hi, I'm Jane Doe</h1>
+          <p className="lead fs-5 mb-4">Full-Stack Web Developer | React · Node.js · TypeScript</p>
+          <a href="#projects" className="btn btn-outline-light btn-lg shadow-sm">
+            Explore Projects
+          </a>
         </div>
       </section>
 
       {/* Projects */}
       <section id="projects" className="py-5 bg-light">
         <div className="container">
-          <h2 className="text-center mb-5 fw-semibold">✨ Featured Projects</h2>
+          <h2 className="text-center fw-semibold mb-5">Projects</h2>
           <div className="row g-4">
             {projects.map((project) => (
               <div key={project.title} className="col-md-6 col-lg-4">
-                <div className="card h-100 border-0 shadow-lg hover-shadow transition">
+                <div className="card h-100 border-0 shadow-sm">
                   {project.image && (
                     <img
                       src={project.image}
@@ -83,7 +85,7 @@ export default function Home() {
                       href={project.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn btn-primary mt-3"
+                      className="btn btn-outline-primary mt-3"
                     >
                       View Project
                     </a>
@@ -98,11 +100,22 @@ export default function Home() {
       {/* Contact */}
       <section id="contact" className="py-5 text-center border-top bg-white">
         <div className="container">
-          <h2 className="fw-semibold mb-4">📬 Get in Touch</h2>
+          <h2 className="fw-semibold mb-4">Contact</h2>
           <p className="mb-2">
             <strong>Email:</strong>{' '}
-            <a href="mailto:jane.doe@example.com" className="text-decoration-none text-primary">
+            <a href="mailto:jane.doe@example.com" className="text-decoration-none text-dark">
               jane.doe@example.com
+            </a>
+          </p>
+          <p className="mb-2">
+            <strong>GitHub:</strong>{' '}
+            <a
+              href="https://github.com/janedoe"
+              target="_blank"
+              rel="noreferrer"
+              className="text-decoration-none text-dark"
+            >
+              github.com/janedoe
             </a>
           </p>
           <p>
@@ -111,7 +124,7 @@ export default function Home() {
               href="https://linkedin.com/in/janedoe"
               target="_blank"
               rel="noreferrer"
-              className="text-decoration-none text-primary"
+              className="text-decoration-none text-dark"
             >
               linkedin.com/in/janedoe
             </a>
