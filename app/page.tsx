@@ -31,26 +31,44 @@ export default function Home() {
   ];
 
   return (
-    <main>
-      {/* Hero Section */}
-      <section className="py-5 text-center bg-dark text-light">
+    <main style={{ scrollBehavior: 'smooth' }}>
+      {/* Navbar */}
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
         <div className="container">
-          <h1 className="display-3 fw-bold">Jane Doe</h1>
-          <p className="lead">Web Developer · Designer · Creator</p>
-          <a href="#projects" className="btn btn-outline-light btn-lg mt-3">
-            View My Work
-          </a>
+          <a className="navbar-brand fw-bold fs-4" href="#">Jane Doe</a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul className="navbar-nav gap-3">
+              <li className="nav-item">
+                <a className="nav-link" href="#projects">Projects</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section className="py-5 bg-dark text-light text-center">
+        <div className="container">
+          <h1 className="display-3 fw-bold mb-2">👩‍💻 Jane Doe</h1>
+          <p className="lead fs-4">Web Developer · Designer · Creator</p>
+          <a href="#projects" className="btn btn-outline-light btn-lg mt-3 shadow-sm">View My Work</a>
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Projects */}
       <section id="projects" className="py-5 bg-light">
         <div className="container">
-          <h2 className="text-center fs-2 fw-semibold mb-5">Projects</h2>
+          <h2 className="text-center mb-5 fw-semibold">✨ Featured Projects</h2>
           <div className="row g-4">
             {projects.map((project) => (
               <div key={project.title} className="col-md-6 col-lg-4">
-                <div className="card h-100 shadow-sm border-0">
+                <div className="card h-100 border-0 shadow-lg hover-shadow transition">
                   {project.image && (
                     <img
                       src={project.image}
@@ -60,9 +78,7 @@ export default function Home() {
                   )}
                   <div className="card-body d-flex flex-column">
                     <h5 className="card-title fw-bold">{project.title}</h5>
-                    <p className="card-text text-muted flex-grow-1">
-                      {project.description}
-                    </p>
+                    <p className="card-text text-muted flex-grow-1">{project.description}</p>
                     <a
                       href={project.link}
                       target="_blank"
@@ -79,16 +95,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-5 text-center border-top">
+      {/* Contact */}
+      <section id="contact" className="py-5 text-center border-top bg-white">
         <div className="container">
-          <h2 className="fs-2 fw-semibold mb-4">Get in Touch</h2>
+          <h2 className="fw-semibold mb-4">📬 Get in Touch</h2>
           <p className="mb-2">
             <strong>Email:</strong>{' '}
-            <a
-              href="mailto:jane.doe@example.com"
-              className="text-decoration-none text-primary"
-            >
+            <a href="mailto:jane.doe@example.com" className="text-decoration-none text-primary">
               jane.doe@example.com
             </a>
           </p>
