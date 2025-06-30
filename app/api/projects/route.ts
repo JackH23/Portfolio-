@@ -3,12 +3,24 @@ import connect from '@/lib/mongodb';
 import Project from '@/models/Project';
 
 export async function GET() {
+  if (!process.env.MONGODB_URI) {
+    // Return empty list if the database is not configured
+    return NextResponse.json([]);
+  }
+
   await connect();
   const projects = await Project.find().sort({ createdAt: -1 });
   return NextResponse.json(projects);
 }
 
 export async function POST(req: NextRequest) {
+  if (!process.env.MONGODB_URI) {
+    return NextResponse.json(
+      { message: 'Database not configured' },
+      { status: 503 }
+    );
+  }
+
   try {
     const data = await req.json();
     await connect();
