@@ -8,9 +8,13 @@ export async function GET() {
     return NextResponse.json([]);
   }
 
-  await connect();
-  const projects = await Project.find().sort({ createdAt: -1 });
-  return NextResponse.json(projects);
+  try {
+    await connect();
+    const projects = await Project.find().sort({ createdAt: -1 });
+    return NextResponse.json(projects);
+  } catch (error: any) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
+  }
 }
 
 export async function POST(req: NextRequest) {
