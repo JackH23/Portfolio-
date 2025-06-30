@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 
 type Project = {
   title: string;
@@ -12,43 +12,65 @@ export default function Home() {
   const projects: Project[] = [
     {
       title: "Weather App",
-      description: "A responsive weather app using React and OpenWeatherMap API. Shows current weather, forecasts, and location search.",
+      description:
+        "A responsive weather app using React and OpenWeatherMap API. Shows current weather, forecasts, and location search.",
       link: "https://your-weather-app.com",
       image: "https://via.placeholder.com/600x300?text=Weather+App",
     },
     {
       title: "Portfolio Website",
-      description: "This personal portfolio built with React, Bootstrap, and TypeScript. Showcases my recent work and skills.",
+      description:
+        "This personal portfolio built with React, Bootstrap, and TypeScript. Showcases my recent work and skills.",
       link: "#",
       image: "https://via.placeholder.com/600x300?text=Portfolio+Website",
     },
     {
       title: "Task Manager",
-      description: "A productivity-focused task manager app with Firebase backend, real-time updates, and user authentication.",
+      description:
+        "A productivity-focused task manager app with Firebase backend, real-time updates, and user authentication.",
       link: "https://your-task-manager.com",
       image: "https://via.placeholder.com/600x300?text=Task+Manager",
     },
   ];
 
   return (
-    <main style={{ scrollBehavior: 'smooth' }}>
+    <main style={{ scrollBehavior: "smooth" }}>
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
         <div className="container">
-          <a className="navbar-brand fw-bold fs-4" href="#">Jane Doe</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <a className="navbar-brand fw-bold fs-4" href="#">
+            Jane Doe
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <div
+            className="collapse navbar-collapse justify-content-end"
+            id="navbarNav"
+          >
             <ul className="navbar-nav gap-3">
               <li className="nav-item">
-                <a className="nav-link" href="#projects">Projects</a>
+                <a className="nav-link" href="#projects">
+                  Projects
+                </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/add">Add Project</a>
+                <a className="nav-link" href="/add">
+                  Add Project
+                </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#contact">Contact</a>
+                <a className="nav-link" href="#contact">
+                  Contact
+                </a>
               </li>
             </ul>
           </div>
@@ -59,8 +81,13 @@ export default function Home() {
       <section className="py-5 bg-dark text-light text-center">
         <div className="container">
           <h1 className="display-4 fw-bold mb-3">Hi, I'm Jane Doe</h1>
-          <p className="lead fs-5 mb-4">Full-Stack Web Developer | React · Node.js · TypeScript</p>
-          <a href="#projects" className="btn btn-outline-light btn-lg shadow-sm">
+          <p className="lead fs-5 mb-4">
+            Full-Stack Web Developer | React · Node.js · TypeScript
+          </p>
+          <a
+            href="#projects"
+            className="btn btn-outline-light btn-lg shadow-sm"
+          >
             Explore Projects
           </a>
         </div>
@@ -69,7 +96,12 @@ export default function Home() {
       {/* Projects */}
       <section id="projects" className="py-5 bg-light">
         <div className="container">
-          <h2 className="text-center fw-semibold mb-5">Projects</h2>
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="fw-semibold mb-0">Projects</h2>
+            <a href="/add" className="btn btn-success">
+              + Add Project
+            </a>
+          </div>
           <div className="row g-4">
             {projects.map((project) => (
               <div key={project.title} className="col-md-6 col-lg-4">
@@ -78,12 +110,14 @@ export default function Home() {
                     <img
                       src={project.image}
                       className="card-img-top"
-                      alt={project.title}
+                      alt={`${project.title} preview`}
                     />
                   )}
                   <div className="card-body d-flex flex-column">
                     <h5 className="card-title fw-bold">{project.title}</h5>
-                    <p className="card-text text-muted flex-grow-1">{project.description}</p>
+                    <p className="card-text text-muted flex-grow-1">
+                      {project.description}
+                    </p>
                     <a
                       href={project.link}
                       target="_blank"
@@ -105,13 +139,16 @@ export default function Home() {
         <div className="container">
           <h2 className="fw-semibold mb-4">Contact</h2>
           <p className="mb-2">
-            <strong>Email:</strong>{' '}
-            <a href="mailto:jane.doe@example.com" className="text-decoration-none text-dark">
+            <strong>Email:</strong>{" "}
+            <a
+              href="mailto:jane.doe@example.com"
+              className="text-decoration-none text-dark"
+            >
               jane.doe@example.com
             </a>
           </p>
           <p className="mb-2">
-            <strong>GitHub:</strong>{' '}
+            <strong>GitHub:</strong>{" "}
             <a
               href="https://github.com/janedoe"
               target="_blank"
@@ -122,7 +159,7 @@ export default function Home() {
             </a>
           </p>
           <p>
-            <strong>LinkedIn:</strong>{' '}
+            <strong>LinkedIn:</strong>{" "}
             <a
               href="https://linkedin.com/in/janedoe"
               target="_blank"
