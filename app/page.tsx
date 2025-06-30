@@ -63,11 +63,6 @@ export default function Home() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/add">
-                  Add Project
-                </a>
-              </li>
-              <li className="nav-item">
                 <a className="nav-link" href="#contact">
                   Contact
                 </a>
