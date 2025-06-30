@@ -45,6 +45,9 @@ export default function Home() {
                 <a className="nav-link" href="#projects">Projects</a>
               </li>
               <li className="nav-item">
+                <a className="nav-link" href="/add">Add Project</a>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link" href="#contact">Contact</a>
               </li>
             </ul>
