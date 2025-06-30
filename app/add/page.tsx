@@ -18,6 +18,19 @@ export default function AddProjectPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) {
+      setImage('');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -84,12 +97,12 @@ export default function AddProjectPage() {
           />
         </div>
         <div className="mb-3">
-          <label className="form-label">Image URL</label>
+          <label className="form-label">Image</label>
           <input
-            type="url"
+            type="file"
+            accept="image/*"
             className="form-control"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            onChange={handleImageChange}
           />
         </div>
         <button type="submit" className="btn btn-primary" disabled={loading}>
