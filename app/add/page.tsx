@@ -15,21 +15,37 @@ export default function AddProjectPage() {
   const [link, setLink] = useState('');
   const [image, setImage] = useState('');
   const [addedProject, setAddedProject] = useState<Project | null>(null);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch('/api/projects', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, description, link, image }),
-    });
-    if (res.ok) {
+    try {
+      setError('');
+      setLoading(true);
+      const res = await fetch('/api/projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, description, link, image }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        setError(data?.message || 'Failed to add project');
+        return;
+      }
+
       const project: Project = await res.json();
       setAddedProject(project);
       setTitle('');
       setDescription('');
       setLink('');
       setImage('');
+    } catch (err) {
+      console.error('Error submitting project:', err);
+      setError('Failed to add project');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,7 +92,14 @@ export default function AddProjectPage() {
             onChange={(e) => setImage(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">Add Project</button>
+        <button type="submit" className="btn btn-primary" disabled={loading}>
+          {loading ? 'Adding...' : 'Add Project'}
+        </button>
+        {error && (
+          <div className="alert alert-danger mt-3" role="alert">
+            {error}
+          </div>
+        )}
       </form>
 
       {addedProject && (
