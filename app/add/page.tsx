@@ -16,14 +16,21 @@ export default function AddProjectPage() {
   const [image, setImage] = useState('');
   const [addedProject, setAddedProject] = useState<Project | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const newProject: Project = { title, description, link, image };
-    setAddedProject(newProject);
-    setTitle('');
-    setDescription('');
-    setLink('');
-    setImage('');
+    const res = await fetch('/api/projects', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, description, link, image }),
+    });
+    if (res.ok) {
+      const project: Project = await res.json();
+      setAddedProject(project);
+      setTitle('');
+      setDescription('');
+      setLink('');
+      setImage('');
+    }
   };
 
   return (

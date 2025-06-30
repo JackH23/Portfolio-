@@ -1,5 +1,6 @@
+"use client";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 type Project = {
   title: string;
@@ -9,29 +10,14 @@ type Project = {
 };
 
 export default function Home() {
-  const projects: Project[] = [
-    {
-      title: "Weather App",
-      description:
-        "A responsive weather app using React and OpenWeatherMap API. Shows current weather, forecasts, and location search.",
-      link: "https://your-weather-app.com",
-      image: "https://via.placeholder.com/600x300?text=Weather+App",
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "This personal portfolio built with React, Bootstrap, and TypeScript. Showcases my recent work and skills.",
-      link: "#",
-      image: "https://via.placeholder.com/600x300?text=Portfolio+Website",
-    },
-    {
-      title: "Task Manager",
-      description:
-        "A productivity-focused task manager app with Firebase backend, real-time updates, and user authentication.",
-      link: "https://your-task-manager.com",
-      image: "https://via.placeholder.com/600x300?text=Task+Manager",
-    },
-  ];
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    fetch("/api/projects")
+      .then((res) => res.json())
+      .then((data) => setProjects(data))
+      .catch(console.error);
+  }, []);
 
   return (
     <main style={{ scrollBehavior: "smooth" }}>
