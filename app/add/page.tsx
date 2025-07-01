@@ -141,6 +141,11 @@ export default function AddProjectPage() {
           </div>
         </div>
       )}
+      <div className="mt-4">
+        <a href="/" className="btn btn-secondary">
+          Back to Home
+        </a>
+      </div>
     </main>
   );
 }
